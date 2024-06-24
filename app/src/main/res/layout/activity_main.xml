@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,8 +11,8 @@
     <ImageView
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:src="@drawable/main_icon"
         android:layout_marginStart="8dp"
+        android:src="@drawable/main_icon"
         app:layout_constraintBottom_toBottomOf="@+id/tvMain"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvMain" />
@@ -21,8 +20,8 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_menu"
         android:layout_marginEnd="5dp"
+        android:src="@drawable/ic_menu"
         app:layout_constraintBottom_toBottomOf="@+id/tvMain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvMain" />
@@ -31,26 +30,116 @@
         android:id="@+id/tvMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gabriel Cayetano"
-        android:textSize="18sp"
-        android:textColor="@color/black"
         android:layout_marginVertical="5dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:text="Gabriel Cayetano"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/tvMeals"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/lvListView"/>
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/tvMeals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvVariation"
+        app:layout_constraintTop_toBottomOf="@id/tvMain"
+        app:layout_constraintBottom_toTopOf="@id/lvListView"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        android:layout_marginVertical="2dp"
+        android:text="Meals"
+        android:fontFamily="@font/montserrat_regular"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/soft_black"/>
+    <TextView
+        android:id="@+id/tvVariation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tvMeals"
+        app:layout_constraintTop_toTopOf="@id/tvMeals"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/tvMeals"
+        android:text=" (variety)"
+        android:fontFamily="@font/montserrat_regular"
+        android:textSize="10sp"/>
     <ListView
         android:id="@+id/lvListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        app:layout_constraintBottom_toTopOf="@id/tvDrinks"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvMain"
-        app:layout_constraintBottom_toTopOf="@id/tvTotal"
+        app:layout_constraintTop_toBottomOf="@id/tvMeals"
         tools:listitem="@layout/food_item" />
+    <TextView
+        android:id="@+id/tvDrinks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvDrinksPrice"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintTop_toBottomOf="@id/lvListView"
+        app:layout_constraintBottom_toTopOf="@id/rgRadioGroup"
+        android:layout_marginVertical="2dp"
+        android:text="Drinks"
+        android:fontFamily="@font/montserrat_regular"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/soft_black"/>
+    <TextView
+        android:id="@+id/tvDrinksPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tvDrinks"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvDrinks"
+        app:layout_constraintBottom_toBottomOf="@id/tvDrinks"
+        android:text=" (P20.00)"
+        android:textSize="10sp"
+        android:fontFamily="@font/montserrat_regular"/>
+    <RadioGroup
+        android:id="@+id/rgRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDrinks">
+        <RadioButton
+            android:id="@+id/rbWater"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Water"/>
+        <RadioButton
+            android:id="@+id/rbJuice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Juice"/>
+        <RadioButton
+            android:id="@+id/rbTea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Tea"/>
+        <RadioButton
+            android:id="@+id/rbCoke"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Coke"/>
+        <RadioButton
+            android:id="@+id/rbSprite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Sprite"/>
+    </RadioGroup>
 
+    
     <TextView
         android:id="@+id/tvTotal"
         android:layout_width="wrap_content"
@@ -61,7 +150,7 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lvListView" />
+        app:layout_constraintBottom_toTopOf="@id/btnCheckout" />
 
     <TextView
         android:id="@+id/tvTotalAmount"
@@ -69,8 +158,9 @@
         android:layout_height="wrap_content"
         android:text=""
         android:textSize="12sp"
+        app:layout_constraintTop_toTopOf="@id/tvTotal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lvListView"/>
+        app:layout_constraintTop_toBottomOf="@id/lvListView" />
 
     <Button
         android:id="@+id/btnCheckout"
@@ -82,4 +172,4 @@
         app:layout_constraintStart_toStartOf="parent" />
 
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

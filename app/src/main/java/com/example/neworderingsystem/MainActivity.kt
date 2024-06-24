@@ -1,18 +1,15 @@
 package com.example.neworderingsystem
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.ListView
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import java.math.BigDecimal
-import kotlin.math.round
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,12 +19,12 @@ class MainActivity : AppCompatActivity() {
         val listView = findViewById<ListView>(R.id.lvListView)
 
         val foods = arrayListOf(
-            FoodData(R.drawable.burger, "Burger", 199.99, false),
-            FoodData(R.drawable.hotdog, "Hotdog", 39.99, false),
-            FoodData(R.drawable.nuggets, "Nuggets", 79.99, false),
-            FoodData(R.drawable.noodles, "Noodles", 49.99, false),
-            FoodData(R.drawable.fries, "Fries", 99.99, false),
-            FoodData(R.drawable.juice, "Juice", 29.99, false)
+            FoodData(R.drawable.burger, "Burger", 150, false),
+            FoodData(R.drawable.chicken, "Chicken", 100, false),
+            FoodData(R.drawable.hotdog, "Hotdog", 40, false),
+            FoodData(R.drawable.nuggets, "Nuggets", 80, false),
+            FoodData(R.drawable.noodles, "Noodles", 50, false),
+            FoodData(R.drawable.fries, "Fries", 100, false)
         )
 
         val adapter = ListAdapter(this, R.layout.food_item, foods)
@@ -42,17 +39,24 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btnCheckout).setOnClickListener {
             val orderedItems = foods.toMutableList().filter { it.check }.map { it.name }
             val prices = foods.toMutableList().filter { it.check }.map { it.price }
-            if (orderedItems.isNotEmpty()){
-                findViewById<TextView>(R.id.tvTotal).text = "Total"
+            val checkedDrink = findViewById<RadioGroup>(R.id.rgRadioGroup).checkedRadioButtonId
+            val drink = findViewById<RadioButton>(checkedDrink)
 
-                var sum = BigDecimal(0.0)
+            if (orderedItems.isNotEmpty()){
+                var sum = 0
                 for (i in prices){
-                    sum += BigDecimal(i)
+                    sum += i
                 }
 
-                findViewById<TextView>(R.id.tvTotalAmount).text = "P${sum}"
+                if (drink != null){
+                    sum += 20
+                }
+                findViewById<TextView>(R.id.tvTotal).text = "Total"
+                findViewById<TextView>(R.id.tvTotalAmount).text = "P${sum}.00"
                 return@setOnClickListener
             }
+            findViewById<TextView>(R.id.tvTotal).text = ""
+            findViewById<TextView>(R.id.tvTotalAmount).text = ""
             Toast.makeText(this, "No orders placed!", Toast.LENGTH_SHORT).show()
         }
 
