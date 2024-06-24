@@ -37,10 +37,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.btnCheckout).setOnClickListener {
+            listView.adapter = ListAdapter(this, R.layout.food_item, foods)
             val orderedItems = foods.toMutableList().filter { it.check }.map { it.name }
             val prices = foods.toMutableList().filter { it.check }.map { it.price }
             val checkedDrink = findViewById<RadioGroup>(R.id.rgRadioGroup).checkedRadioButtonId
             val drink = findViewById<RadioButton>(checkedDrink)
+
 
             if (orderedItems.isNotEmpty()){
                 var sum = 0
