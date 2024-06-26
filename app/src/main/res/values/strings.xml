@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">New Ordering System</string>
+    <string-array name="drinks_size" >
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
+    </string-array>
 </resources>

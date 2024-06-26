@@ -43,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tvVariation"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvMain"
         app:layout_constraintBottom_toTopOf="@id/lvListView"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -53,17 +53,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         android:textColor="@color/soft_black"/>
-    <TextView
-        android:id="@+id/tvVariation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/tvMeals"
-        app:layout_constraintTop_toTopOf="@id/tvMeals"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/tvMeals"
-        android:text=" (variety)"
-        android:fontFamily="@font/montserrat_regular"
-        android:textSize="10sp"/>
+
     <ListView
         android:id="@+id/lvListView"
         android:layout_width="match_parent"
@@ -71,8 +61,7 @@
         app:layout_constraintBottom_toTopOf="@id/tvDrinks"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvMeals"
-        tools:listitem="@layout/food_item" />
+        app:layout_constraintTop_toBottomOf="@id/tvMeals" />
     <TextView
         android:id="@+id/tvDrinks"
         android:layout_width="wrap_content"
@@ -96,7 +85,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/tvDrinks"
         app:layout_constraintBottom_toBottomOf="@id/tvDrinks"
-        android:text=" (P20.00)"
+        android:text=" (P20, P40, P60)"
         android:textSize="10sp"
         android:fontFamily="@font/montserrat_regular"/>
     <RadioGroup
@@ -139,7 +128,14 @@
             android:text="Sprite"/>
     </RadioGroup>
 
-    
+    <Spinner
+        android:id="@+id/spSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rgRadioGroup"/>
+
     <TextView
         android:id="@+id/tvTotal"
         android:layout_width="wrap_content"
